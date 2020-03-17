@@ -5,7 +5,7 @@ import HomePage from "./pages/homepage/homepage_comp";
 import ShopPage from "./pages/shop_page/shop_comp";
 import Header from "./components/header/header-comp.jsx";
 import SignInSignUp from "./pages/signin_signup/signin_signup_comp.jsx";
-import { auth } from "./firebase/firebase.utils";
+import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
 
 class App extends React.Component {
   constructor() {
@@ -19,14 +19,30 @@ class App extends React.Component {
 
   //checks if user logsin or logs out and save the current user
   componentDidMount() {
-    this.unsubscribeFromAuth = auth.onAuthStateChanged(user => {
-      this.setState({
-        currentUser: user
-      });
-      console.log(user);
-    });
-  }
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
 
+      //if User Auth exists, i.e new user has signed in
+      if (userAuth){
+        //store user in database
+        const userRef= await createUserProfileDocument(userAuth)  
+
+         //onSnaphot is to get real time data from firestore
+         //snapshot is created on userRef that is docRef of that partifular userID
+         //snapshot.data() retrives real time updates.
+        userRef.onSnapshot(snapshot=>{                           
+          this.setState({
+            currentUser: {
+              id:snapshot.id,
+              ...snapshot.data()
+            }
+          }, ()=> console.log(this.state) )
+        })
+        
+      }
+      else this.setState({currentUser:userAuth})
+      
+  })
+  }
   //unsubribe user when component unmounts
   componentWillUnmount() {
     this.unsubscribeFromAuth();

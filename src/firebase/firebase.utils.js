@@ -20,12 +20,43 @@ const firestore = firebase.firestore(); //Setsup the Frebase Firestore
 const provider = new firebase.auth.GoogleAuthProvider(); //new window to prompt login using google/twitter or any other method
 provider.setCustomParameters({ prompt: "select_account" }); // prompts a new window to login
 
-
 //Function called to Signin using Google Account prompt, wherever needed !!
 const signInWithGoogle = () => {
   auth.signInWithPopup(provider);
 };
 
-export { auth, firestore, signInWithGoogle };
+//input new document in collection "users"
+const createUserProfileDocument = async (user, additionalDate) => {
+  //if user object is null, then return. if not, create a new user doc.
+  if (!user) return;
+
+  //Runs, only if new user has autenticated using google O'Auth
+  //create a docRef from userID, docRef is used for CRUD operation,
+  //docRef doesn't revert bac actual data.
+  const userRef = firestore.doc(`/users/${user.uid}`);
+
+  //create a snapshot from userID, snapshot is used to retrive actual data
+  // & check if userID exists or not.
+  //"exists" property will be empty, if no data exists corresponding to that userID snapshot.
+  const snapshot = await userRef.get();
+
+  if (!snapshot.exists) {
+    const { displayName, email } = user;
+    const createdAt = new Date();
+    try {
+      await userRef.set({
+        displayName,
+        email,
+        createdAt,
+        ...additionalDate
+      });
+    } catch (err) {
+      console.log("User cannot be created", err);
+    }
+  }
+  return userRef;
+};
+
+export { auth, firestore, signInWithGoogle, createUserProfileDocument };
 
 export default firebase;
