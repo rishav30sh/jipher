@@ -6,42 +6,30 @@ import ShopPage from "./pages/shop_page/shop_comp";
 import Header from "./components/header/header-comp.jsx";
 import SignInSignUp from "./pages/signin_signup/signin_signup_comp.jsx";
 import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
-
+import { connect } from "react-redux";
+import { setCurrentUser } from "./redux/user/user.actions";
 class App extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      currentUser: null
-    };
-  }
-
-  unsubscribeFromAuth = null;  //keep track of Auth user 
+  unsubscribeFromAuth = null; //keep track of Auth user
 
   //checks if user logsin or logs out and save the current user
   componentDidMount() {
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
-
       //if User Auth exists, i.e new user has signed in
-      if (userAuth){
+      if (userAuth) {
         //store user in database
-        const userRef= await createUserProfileDocument(userAuth)  
+        const userRef = await createUserProfileDocument(userAuth);
 
-         //onSnaphot is to get real time data from firestore
-         //snapshot is created on userRef that is docRef of that partifular userID
-         //snapshot.data() retrives real time updates.
-        userRef.onSnapshot(snapshot=>{                           
-          this.setState({
-            currentUser: {
-              id:snapshot.id,
-              ...snapshot.data()
-            }
-          }, ()=> console.log(this.state) )
-        })
-        
-      }
-      else this.setState({currentUser:userAuth})
-      
-  })
+        //onSnaphot is to get real time data from firestore
+        //snapshot is created on userRef that is docRef of that partifular userID
+        //snapshot.data() retrives real time updates.
+        userRef.onSnapshot(snapshot => {
+          this.props.setCurrentUser({
+            id: snapshot.id,
+            ...snapshot.data()
+          });
+        });
+      } else this.props.setCurrentUser(userAuth);
+    });
   }
   //unsubribe user when component unmounts
   componentWillUnmount() {
@@ -51,7 +39,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <Header currentUser={this.state.currentUser}/>
+        <Header />
         <Switch>
           <Route path="/" exact component={HomePage} />
           <Route path="/shop" exact component={ShopPage} />
@@ -62,4 +50,8 @@ class App extends React.Component {
   }
 }
 
-export default App;
+const mapDispatchToProps = dispatch => ({
+  setCurrentUser: user => dispatch(setCurrentUser(user))
+});
+
+export default connect(null, mapDispatchToProps)(App);

@@ -29,21 +29,20 @@ class SignUp extends React.Component {
         email,
         password
       );
-      createUserProfileDocument( user,{displayName });
+      createUserProfileDocument(user, { displayName });
 
-      this.setState = {
+      this.setState({
         displayName: "",
         email: "",
         password: "",
         confirmPassword: ""
-      };
+      });
     } catch (err) {
       console.log("Signup failed", err);
     }
   };
 
   handleChange = event => {
-    
     const { name, value } = event.target;
     this.setState({ [name]: value });
   };
