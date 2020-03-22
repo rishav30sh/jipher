@@ -3,6 +3,8 @@ import "./collection-items-style.scss";
 import CustomButton from "../custom-button/custom-button-comp";
 import {connect} from 'react-redux'
 import {addItem} from '../../redux/cart-dropdown/cart-dropdwon.action'
+
+
 const CollectionItem = ({ item, addItem }) => {
   const { name, price,imageUrl}=item
   return (
