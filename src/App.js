@@ -37,13 +37,13 @@ class App extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <div className="App">
         <Header />
         <Switch>
           <Route path="/" exact component={HomePage} />
           <Route path="/shop" exact component={ShopPage} />
+          {console.log(this.props)}
           <Route
             path="/signin"
             exact
@@ -57,12 +57,10 @@ class App extends React.Component {
   }
 }
 
-const mapDispatchToProps = () => ({
-  setCurrentUser
-});
+
 
 const mapStateToProps = ({ user }) => ({
-  setCurrentUser: user.currentUser
+  currentUser: user.currentUser
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, {setCurrentUser})(App);
