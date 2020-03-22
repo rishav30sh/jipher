@@ -1,12 +1,22 @@
 import React from "react";
-import './cutsom-button-style.scss';
+import "./cutsom-button-style.scss";
 
-const CustomButton = ({ children,isGoogleSignIn, ...otherProps }) => {
+const CustomButton = ({
+  children,
+  isGoogleSignIn,
+  inverted,
+  ...otherProps
+}) => {
   return (
-    <button className={` ${isGoogleSignIn ? "googleSignIn" : ''} custom-button `} {...otherProps}>
+    <button
+      className={` ${inverted ? "inverted" : ""} ${
+        isGoogleSignIn ? "googleSignIn" : ""
+      } custom-button `}
+      {...otherProps}
+    >
       {children}
     </button>
   );
 };
 
-export default CustomButton
+export default CustomButton;
