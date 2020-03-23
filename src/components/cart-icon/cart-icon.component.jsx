@@ -3,13 +3,17 @@ import "./cart-icon.styles.scss";
 import { connect } from "react-redux";
 import { CartDropDownAction } from "../../redux/cart-dropdown/cart-dropdwon.action";
 import { ReactComponent as ShoppingIcon } from "../../assets/shopping-bag.svg";
-const CartIcon = ({ CartDropDownAction }) => {
+import {selectCartItemsCount} from '../../redux/cart-dropdown/cart-selector'
+
+const CartIcon = ({ CartDropDownAction,itemCount }) => {
   return (
     <div className="cart-icon" onClick={() => CartDropDownAction()}>
       <ShoppingIcon className="shopping-icon" />
-      <span className="item-count">0</span>
+      <span className="item-count">{itemCount}</span>
     </div>
   );
 };
-
-export default connect(null, {CartDropDownAction})(CartIcon);
+const mapStateToProps = (state) => ({
+  itemCount: selectCartItemsCount(state)
+});
+export default connect(mapStateToProps, { CartDropDownAction })(CartIcon);
