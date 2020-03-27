@@ -4,11 +4,17 @@ import "./index.css";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
-import store  from './redux/store'
+import { store, persistor } from "./redux/store";
+import { PersistGate } from "redux-persist/integration/react";
+
+//persistorGate is specifically for react and it wraps App with the prop persistor which is imported from
+//root reducer and is actually persisted store of our actual store
 ReactDOM.render(
-  <Provider store={store }>
+  <Provider store={store}>
     <BrowserRouter>
-      <App />
+      <PersistGate persistor={persistor}>
+        <App />
+      </PersistGate>
     </BrowserRouter>
   </Provider>,
   document.getElementById("root")
