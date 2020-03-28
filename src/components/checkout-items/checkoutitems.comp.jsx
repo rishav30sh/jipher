@@ -1,6 +1,7 @@
 import React from "react";
 import "./checkoutitems.style.scss";
 import { connect } from "react-redux";
+
 import { clearItemFromCart, addItem, removeItem } from "../../redux/cart-dropdown/cart-dropdwon.action";
 const CheckoutItems = ({ cartItems, clearItemFromCart, addItem, removeItem }) => {
   const { name, imageUrl, price, quantity} = cartItems;
