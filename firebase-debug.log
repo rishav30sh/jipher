@@ -1,0 +1,126 @@
+[debug] [2020-03-28T11:43:58.232Z] ----------------------------------------------------------------------
+[debug] [2020-03-28T11:43:58.234Z] Command:       /usr/local/bin/node /usr/local/bin/firebase deploy
+[debug] [2020-03-28T11:43:58.234Z] CLI Version:   7.16.1
+[debug] [2020-03-28T11:43:58.234Z] Platform:      darwin
+[debug] [2020-03-28T11:43:58.234Z] Node Version:  v12.16.1
+[debug] [2020-03-28T11:43:58.235Z] Time:          Sat Mar 28 2020 17:13:58 GMT+0530 (India Standard Time)
+[debug] [2020-03-28T11:43:58.235Z] ----------------------------------------------------------------------
+[debug] [2020-03-28T11:43:58.235Z] 
+[debug] [2020-03-28T11:43:58.251Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-03-28T11:43:58.252Z] > authorizing via signed-in user
+[debug] [2020-03-28T11:43:58.252Z] [iam] checking project jipher-3558 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2020-03-28T11:43:58.255Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/jipher-3558:testIamPermissions  
+
+[debug] [2020-03-28T11:44:28.287Z] [iam] error while checking permissions, command may fail: FirebaseError: Server Error. getaddrinfo ENOTFOUND cloudresourcemanager.googleapis.com
+[debug] [2020-03-28T11:44:28.289Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/jipher-3558  
+ 
+[debug] [2020-03-28T11:44:46.749Z] Server Error. getaddrinfo ENOTFOUND firebase.googleapis.com
+[debug] [2020-03-28T11:44:46.761Z] FirebaseError: Server Error. getaddrinfo ENOTFOUND firebase.googleapis.com
+    at Request._callback (/usr/local/lib/node_modules/firebase-tools/lib/api.js:31:31)
+    at self.callback (/usr/local/lib/node_modules/firebase-tools/node_modules/request/request.js:185:22)
+    at Request.emit (events.js:311:20)
+    at Request.EventEmitter.emit (domain.js:482:12)
+    at Request.onRequestError (/usr/local/lib/node_modules/firebase-tools/node_modules/request/request.js:877:8)
+    at ClientRequest.emit (events.js:323:22)
+    at ClientRequest.EventEmitter.emit (domain.js:482:12)
+    at TLSSocket.socketErrorListener (_http_client.js:426:9)
+    at TLSSocket.emit (events.js:311:20)
+    at TLSSocket.EventEmitter.emit (domain.js:482:12)
+    at emitErrorNT (internal/streams/destroy.js:92:8)
+    at emitErrorAndCloseNT (internal/streams/destroy.js:60:3)
+    at processTicksAndRejections (internal/process/task_queues.js:84:21)
+[error] 
+[error] Error: Failed to get Firebase project jipher-3558. Please make sure the project exists and your account has permission to access it.
+[debug] [2020-03-28T11:45:00.262Z] ----------------------------------------------------------------------
+[debug] [2020-03-28T11:45:00.264Z] Command:       /usr/local/bin/node /usr/local/bin/firebase deploy
+[debug] [2020-03-28T11:45:00.264Z] CLI Version:   7.16.1
+[debug] [2020-03-28T11:45:00.264Z] Platform:      darwin
+[debug] [2020-03-28T11:45:00.264Z] Node Version:  v12.16.1
+[debug] [2020-03-28T11:45:00.265Z] Time:          Sat Mar 28 2020 17:15:00 GMT+0530 (India Standard Time)
+[debug] [2020-03-28T11:45:00.265Z] ----------------------------------------------------------------------
+[debug] [2020-03-28T11:45:00.265Z] 
+[debug] [2020-03-28T11:45:00.273Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-03-28T11:45:00.273Z] > authorizing via signed-in user
+[debug] [2020-03-28T11:45:00.273Z] [iam] checking project jipher-3558 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2020-03-28T11:45:00.282Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/jipher-3558:testIamPermissions  
+
+[debug] [2020-03-28T11:45:30.311Z] [iam] error while checking permissions, command may fail: FirebaseError: Server Error. getaddrinfo ENOTFOUND cloudresourcemanager.googleapis.com
+[debug] [2020-03-28T11:45:30.314Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/jipher-3558  
+ 
+[debug] [2020-03-28T11:46:00.320Z] Server Error. getaddrinfo ENOTFOUND firebase.googleapis.com
+[debug] [2020-03-28T11:46:03.032Z] FirebaseError: Server Error. getaddrinfo ENOTFOUND firebase.googleapis.com
+    at Request._callback (/usr/local/lib/node_modules/firebase-tools/lib/api.js:31:31)
+    at self.callback (/usr/local/lib/node_modules/firebase-tools/node_modules/request/request.js:185:22)
+    at Request.emit (events.js:311:20)
+    at Request.EventEmitter.emit (domain.js:482:12)
+    at Request.onRequestError (/usr/local/lib/node_modules/firebase-tools/node_modules/request/request.js:877:8)
+    at ClientRequest.emit (events.js:323:22)
+    at ClientRequest.EventEmitter.emit (domain.js:482:12)
+    at TLSSocket.socketErrorListener (_http_client.js:426:9)
+    at TLSSocket.emit (events.js:311:20)
+    at TLSSocket.EventEmitter.emit (domain.js:482:12)
+    at emitErrorNT (internal/streams/destroy.js:92:8)
+    at emitErrorAndCloseNT (internal/streams/destroy.js:60:3)
+    at processTicksAndRejections (internal/process/task_queues.js:84:21)
+[error] 
+[error] Error: Failed to get Firebase project jipher-3558. Please make sure the project exists and your account has permission to access it.
+[debug] [2020-03-28T11:46:13.771Z] ----------------------------------------------------------------------
+[debug] [2020-03-28T11:46:13.773Z] Command:       /usr/local/bin/node /usr/local/bin/firebase deploy
+[debug] [2020-03-28T11:46:13.773Z] CLI Version:   7.16.1
+[debug] [2020-03-28T11:46:13.773Z] Platform:      darwin
+[debug] [2020-03-28T11:46:13.774Z] Node Version:  v12.16.1
+[debug] [2020-03-28T11:46:13.774Z] Time:          Sat Mar 28 2020 17:16:13 GMT+0530 (India Standard Time)
+[debug] [2020-03-28T11:46:13.774Z] ----------------------------------------------------------------------
+[debug] [2020-03-28T11:46:13.775Z] 
+[debug] [2020-03-28T11:46:13.782Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-03-28T11:46:13.783Z] > authorizing via signed-in user
+[debug] [2020-03-28T11:46:13.783Z] [iam] checking project jipher-3558 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2020-03-28T11:46:13.786Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/jipher-3558:testIamPermissions  
+
+[debug] [2020-03-28T11:46:15.723Z] <<< HTTP RESPONSE 200
+[debug] [2020-03-28T11:46:15.726Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/jipher-3558  
+ 
+[debug] [2020-03-28T11:46:16.383Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'jipher-3558'...
+[info] 
+[info] i  deploying hosting
+[debug] [2020-03-28T11:46:16.392Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/jipher-3558/versions  
+
+[debug] [2020-03-28T11:46:18.865Z] <<< HTTP RESPONSE 200
+[info] i  hosting[jipher-3558]: beginning deploy...
+[info] i  hosting[jipher-3558]: found 18 files in build
+[debug] [2020-03-28T11:46:19.454Z] [hosting] hash cache [YnVpbGQ] stored for 18 files
+[debug] [2020-03-28T11:46:19.454Z] [hosting][hash queue][FINAL]
+[debug] [2020-03-28T11:46:19.454Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/jipher-3558/versions/0ee9f3460f474498:populateFiles  
+ <request body omitted>
+[debug] [2020-03-28T11:46:21.757Z] <<< HTTP RESPONSE 200
+[debug] [2020-03-28T11:46:21.763Z] [hosting][populate queue][FINAL]
+[debug] [2020-03-28T11:46:21.764Z] [hosting] uploads queued: 6
+[debug] [2020-03-28T11:46:26.938Z] [hosting][upload queue][FINAL]
+[info] ✔  hosting[jipher-3558]: file upload complete
+[debug] [2020-03-28T11:46:26.939Z] [hosting] deploy completed after 8070ms
+[debug] [2020-03-28T11:46:29.461Z] [
+  {
+    "config": {
+      "public": "build",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "site": "jipher-3558"
+    },
+    "site": "jipher-3558",
+    "version": "sites/jipher-3558/versions/0ee9f3460f474498"
+  }
+]
+[info] i  hosting[jipher-3558]: finalizing version...
+[debug] [2020-03-28T11:46:29.463Z] >>> HTTP REQUEST PATCH https://firebasehosting.googleapis.com/v1beta1/sites/jipher-3558/versions/0ee9f3460f474498?updateMask=status  
+
+[debug] [2020-03-28T11:46:32.091Z] <<< HTTP RESPONSE 200
+[debug] [2020-03-28T11:46:32.092Z] [hosting] finalized version for jipher-3558:
+[info] ✔  hosting[jipher-3558]: version finalized
+[info] i  hosting[jipher-3558]: releasing new version...
+[debug] [2020-03-28T11:46:32.095Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/jipher-3558/releases?version_name=sites/jipher-3558/versions/0ee9f3460f474498  
+
