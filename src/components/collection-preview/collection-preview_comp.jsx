@@ -3,7 +3,7 @@ import "./collection-preview_style.scss";
 import CollectionItem from '../collection-items/collection-items-comp'
 import { withRouter } from "react-router-dom";
 
-const CollectionPreview = ({ title, items }) => {
+const CollectionPreview = ({title,items}) => {
   return (
     <div className="collection-preview">
       <h1 className="title"> {title.toUpperCase()}</h1>

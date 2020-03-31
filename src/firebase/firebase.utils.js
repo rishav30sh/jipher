@@ -57,6 +57,37 @@ const createUserProfileDocument = async (user, additionalDate) => {
   return userRef;
 };
 
+//adding data 'objectToAdd' from collection in redux to firebase, collectionKey is name
+//of collection..firebstore.batch() is used to put multiple requests inside "map" to firebase,
+//all data is saved.
+//export const addCollectionAndDocuments = async (CollectionKey,objectsToAdd) =>{
+
+// const collectionRef=firestore.collection(CollectionKey)
+
+// const batch = firestore.batch();
+// objectsToAdd.forEach(obj=>{
+//   const newDocRef=collectionRef.doc()
+//  batch.set(newDocRef, obj)
+//})
+//  return await batch.commit()
+//}
+
+export const convertCollectionsSnapshotToMap = collections => {
+  const transformedCollections = collections.docs.map(doc => {
+    const { title, items } = doc.data();
+    return {
+      routeName: encodeURI(title.toLowerCase()),
+      id: doc.id,
+      title,
+      items
+    };
+  });
+  return transformedCollections.reduce((accumulator, collection) => {
+    accumulator[collection.title.toLowerCase()] = collection;
+    return accumulator;
+  }, {});
+};
+
 export { auth, firestore, signInWithGoogle, createUserProfileDocument };
 
 export default firebase;

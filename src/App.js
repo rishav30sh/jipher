@@ -8,9 +8,11 @@ import SignInSignUp from "./pages/signin_signup/signin_signup_comp.jsx";
 import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
 import { connect } from "react-redux";
 import { setCurrentUser } from "./redux/user/user.actions";
-import {SelectCurrentUser} from './redux/user/user.selector'
-import {createStructuredSelector} from 'reselect'
-import Checkout from './pages/checkout/checkout.component'
+import { SelectCurrentUser } from "./redux/user/user.selector";
+import { createStructuredSelector } from "reselect";
+import Checkout from "./pages/checkout/checkout.component";
+import { selectCollectionForPreview } from "./redux/shopData/shopData-selector";
+
 class App extends React.Component {
   unsubscribeFromAuth = null; //keep track of Auth user
 
@@ -32,8 +34,20 @@ class App extends React.Component {
           });
         });
       } else this.props.setCurrentUser(userAuth);
+
+      
+
+        // code to add collections in firebase from redux 'addCollectionsAndDocument' is 
+       //  imported deom firebase,utils and  collectionArray is imported from 'shopcollectionselector    
+      //   addCollectionAndDocuments(
+     //   "collections",
+    //    collectionsArray.map(({items, title})=>{return {items, title}})
+   //  );
+    
+    
     });
   }
+
   //unsubribe user when component unmounts
   componentWillUnmount() {
     this.unsubscribeFromAuth();
@@ -53,17 +67,16 @@ class App extends React.Component {
               this.props.currentUser ? <Redirect to="/" /> : <SignInSignUp />
             }
           />
-          <Route path='/checkout' exact component={Checkout}/>
+          <Route path="/checkout" exact component={Checkout} />
         </Switch>
       </div>
     );
   }
 }
 
-
-
 const mapStateToProps = createStructuredSelector({
-  currentUser: SelectCurrentUser
+  currentUser: SelectCurrentUser,
+  collectionsArray: selectCollectionForPreview
 });
 
-export default connect(mapStateToProps, {setCurrentUser})(App);
+export default connect(mapStateToProps, { setCurrentUser })(App);
